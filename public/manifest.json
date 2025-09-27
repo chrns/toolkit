@@ -1,0 +1,23 @@
+{
+  "name": "Toolkit",
+  "short_name": "Toolkit",
+  "description": "Electronics design toolkit with calculators and helpers",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0B2239",
+  "theme_color": "#0B2239",
+  "icons": [
+    {
+      "src": "pwa_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "pwa_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
