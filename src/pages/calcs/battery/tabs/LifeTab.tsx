@@ -31,7 +31,7 @@ const parseCurrentA = (txt: string): number => {
   return (v ?? 0);
 };
 
-export function BatteryLifeTab() {
+export function LifeTab() {
   const [batteryType, setBatteryType] = useState('LiSOCL2 (DD36000)');
   const [capacity, setCapacity] = useState('36000');
   const [selfDischarge, setSelfDischarge] = useState('0.08');

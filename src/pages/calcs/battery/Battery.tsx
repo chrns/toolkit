@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { TabbedPanel } from '@/ui/components/TabbedPanel';
-import { ImpedanceTab } from '@/pages/calcs/pcb/tabs/ImpedanceTab';
-import { TraceTab } from '@/pages/calcs/pcb/tabs/TraceTab';
-import { ViasTab } from '@/pages/calcs/pcb/tabs/ViasTab';
+import { LifeTab } from '@/pages/calcs/battery/tabs/LifeTab';
+import { MetricsTab } from '@/pages/calcs/battery/tabs/MetricsTab';
+import EsrTab from './tabs/EsrTab';
 
-type PcbTab = 'trace' | 'impedance' | 'vias';
-const TABS: { key: PcbTab; label: string }[] = [
-  { key: 'trace', label: 'Trace' },
-  { key: 'impedance', label: 'Impedance' },
-  { key: 'vias', label: 'Vias' },
+type BatteryTab = 'life' | 'metrics' | 'esr';
+const TABS: { key: BatteryTab; label: string }[] = [
+  { key: 'life', label: 'Life' },
+  { key: 'metrics', label: 'Metrics' },
+  { key: 'esr', label: 'ESR' },
 ];
 
-function parseHash(): PcbTab {
+function parseHash(): BatteryTab {
   const h = (location.hash || '').replace(/^#/, '');
-  return (TABS.some(t => t.key === h) ? h : 'trace') as PcbTab;
+  return (TABS.some(t => t.key === h) ? h : 'life') as BatteryTab;
 }
 
-export default function Pcb() {
-  const [tab, setTab] = useState<PcbTab>(() => parseHash());
+export default function Battery() {
+  const [tab, setTab] = useState<BatteryTab>(() => parseHash());
 
   useEffect(() => {
     const desired = `#${tab}`;
@@ -35,7 +35,7 @@ export default function Pcb() {
   }, []);
 
   const handleSelect = (t: string) => {
-    const key = t as PcbTab;
+    const key = t as BatteryTab;
     if (TABS.some(tab => tab.key === key)) setTab(key);
   };
 
@@ -47,9 +47,9 @@ export default function Pcb() {
           active={tab}
           onSelect={handleSelect}
         >
-          {tab === 'trace' && <TraceTab />}
-          {tab === 'impedance' && <ImpedanceTab />}
-          {tab === 'vias' && <ViasTab />}
+          {tab === 'life' && <LifeTab />}
+          {tab === 'metrics' && <MetricsTab />}
+          {tab === 'esr' && <EsrTab />}
         </TabbedPanel>
       </div>
     </div>

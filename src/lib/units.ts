@@ -3,6 +3,8 @@ export const mil = 0.001 * inch; // meters
 export const mm = 0.001; // meters
 export const c = 299_792_458; // m/s
 export const kelvinShift = 273.15;
+export const IN2_PER_M2 = 1550.0031; // square inches per square meter
+export const SQMILS_PER_IN2 = 1_000_000; // square mils per square inch
 
 export enum ItemType {
   Resistor = 1,

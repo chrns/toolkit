@@ -9,8 +9,8 @@ const Home = lazy(() => import('@/pages/Home'));
 const OhmsLaw = lazy(() => import('@/pages/calcs/ohms/OhmsLaw'));
 const Filter = lazy(() => import('@/pages/calcs/filters/Filter'));
 const Pcb = lazy(() => import('@/pages/calcs/pcb/Pcb'));
-const BatteryLife = lazy(() => import('@/pages/calcs/battery/BatteryLife'));
-const MCU = lazy(() => import('@/pages/calcs/mcu/MCU'));
+const Battery = lazy(() => import('@/pages/calcs/battery/Battery'));
+const Mcu = lazy(() => import('@/pages/calcs/mcu/Mcu'));
 const Components = lazy(() => import('@/pages/calcs/components/Components'));
 
 function Loading() { return <div class="p-4">Loading...</div>; }
@@ -36,8 +36,8 @@ render(
         <Route path="/ohms" component={OhmsLaw} />
         <Route path="/filter" component={Filter} />
         <Route path="/pcb" component={Pcb} />
-        <Route path="/battery" component={BatteryLife} />
-        <Route path="/mcu" component={MCU} />
+        <Route path="/battery" component={Battery} />
+        <Route path="/mcu" component={Mcu} />
         <Route path="/component" component={Components} />
       </Suspense>
     </AppShell>

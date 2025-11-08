@@ -12,7 +12,7 @@ import {
   currentPlaceholder,
   frequencyPlaceholder,
   defaultFrequency
-} from '../../shared';
+} from '@/pages/calcs/shared';
 
 export function RLCTab() {
   type Mode = 'Resistor' | 'Capacitor' | 'Inductor';

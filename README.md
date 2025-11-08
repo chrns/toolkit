@@ -20,3 +20,23 @@ Contributions are welcome! Feel free to open issues or submit pull requests to i
 ## License
 
 This project is licensed under the MIT License.
+
+## Changelog
+
+**v0.2**
+
+- [x] Each tab modifies URL via hashtag
+- [x] Battery ESR
+- [x] Typos fixed
+- [x] Wheatstone Bridge calculator
+- [x] RMS calculator
+- [x] LDO: efficiency and Tja
+- [x] Vias tab: Capacitance, Inductance, SRF, and Impedance
+- [ ] Buck/Boost/Inverter converter ripple voltage calculator
+- [x] ADC calculator
+- [x] More standard CRC8/16/32 polys added
+- [x] Docs are partially updated
+
+**v0.1**
+
+— Initial version

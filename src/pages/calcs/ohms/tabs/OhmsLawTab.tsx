@@ -6,7 +6,7 @@ import { useState, useEffect, useMemo } from "preact/hooks";
 import {
   defaultToleranceR, defaultResistance, defaultVoltage, defaultCurrent,
   resistancePlaceholder, voltagePlaceholder, currentPlaceholder, SolveRVI
-} from '../../shared';
+} from '@/pages/calcs/shared';
 
 export function OhmsLawTab() {
   const [resistance, setResistance] = useState(defaultResistance);

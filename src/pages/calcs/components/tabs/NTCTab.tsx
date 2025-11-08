@@ -3,7 +3,7 @@ import { kelvinShift } from "@/lib/units";
 import { Input } from "@/ui/components/Input";
 import { ResultCard } from "@/ui/components/ResultCard";
 import { useMemo, useState } from "preact/hooks";
-import { resistancePlaceholder, temperaturePlaceholder, voltagePlaceholder } from "../../shared";
+import { resistancePlaceholder, temperaturePlaceholder, voltagePlaceholder } from "@/pages/calcs/shared";
 import { RadioGroup } from "@/ui/components/RadioGroup";
 
 function exp(x: number) { return Math.exp(x); }
@@ -279,6 +279,7 @@ export function NTCTab() {
             placeholder="= Vsup if ratiometric"
           />
         </div>
+        <hr />
         <Input
           label="Measured resistance"
           value={Rmeas}

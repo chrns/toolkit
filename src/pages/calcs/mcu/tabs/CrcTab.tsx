@@ -19,16 +19,74 @@ type Preset = {
 
 const PRESETS: Preset[] = [
   // CRC-8 family
-  { name: 'CRC-8/MAXIM', width: 8, poly: 0x31, init: 0x00, refin: true, refout: true, xorout: 0x00 },
-  { name: 'CRC-8/SMBUS', width: 8, poly: 0x07, init: 0x00, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/AUTOSAR', width: 8, poly: 0x2F, init: 0xFF, refin: false, refout: false, xorout: 0xFF },
+  { name: 'CRC-8/BLUETOOTH', width: 8, poly: 0xA7, init: 0x00, refin: true, refout: true, xorout: 0x00 },
+  { name: 'CRC-8/CDMA2000', width: 8, poly: 0x9B, init: 0xFF, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/DARC', width: 8, poly: 0x39, init: 0x00, refin: true, refout: true, xorout: 0x00 },
+  { name: 'CRC-8/DVB-S2', width: 8, poly: 0xD5, init: 0x00, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/GSM-A', width: 8, poly: 0x1D, init: 0x00, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/GSM-B', width: 8, poly: 0x49, init: 0x00, refin: false, refout: false, xorout: 0xFF },
+  { name: 'CRC-8/HITAG', width: 8, poly: 0x1D, init: 0xFF, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/I-432-1', width: 8, poly: 0x07, init: 0x00, refin: false, refout: false, xorout: 0x55 }, // CRC-8/ITU
+  { name: 'CRC-8/I-CODE', width: 8, poly: 0x1D, init: 0xFD, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/LTE', width: 8, poly: 0x9B, init: 0x00, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/MAXIM', width: 8, poly: 0x31, init: 0x00, refin: true, refout: true, xorout: 0x00 }, // DOW-CRC
+  { name: 'CRC-8/MIFARE-MAD', width: 8, poly: 0x1D, init: 0xC7, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/NRSC-5', width: 8, poly: 0x31, init: 0xFF, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/OPENSAFETY', width: 8, poly: 0x2F, init: 0x00, refin: false, refout: false, xorout: 0x00 },
+  { name: 'CRC-8/ROHC', width: 8, poly: 0x07, init: 0xFF, refin: true, refout: true, xorout: 0x00 },
+  { name: 'CRC-8/SAE-J1850', width: 8, poly: 0x1D, init: 0xFF, refin: false, refout: false, xorout: 0xFF },
+  { name: 'CRC-8/SMBUS', width: 8, poly: 0x07, init: 0x00, refin: false, refout: false, xorout: 0x00 }, // CRC-8-CCITT
+  { name: 'CRC-8/TECH-3250', width: 8, poly: 0x1D, init: 0xFF, refin: true, refout: true, xorout: 0x00 }, // CRC-8/AES, CRC-8/EBU
+  { name: 'CRC-8/WCDMA', width: 8, poly: 0x9B, init: 0x00, refin: true, refout: true, xorout: 0x00 },
 
   // CRC-16 family
+  { name: 'CRC-16/ARC', width: 16, poly: 0x8005, init: 0x0000, refin: true, refout: true, xorout: 0x0000 },
+  { name: 'CRC-16/CDMA2000', width: 16, poly: 0xC867, init: 0xFFFF, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/CMS', width: 16, poly: 0x8005, init: 0xFFFF, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/DDS-110', width: 16, poly: 0x8005, init: 0x800D, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/DECT-R', width: 16, poly: 0x0589, init: 0x0000, refin: false, refout: false, xorout: 0x0001 },
+  { name: 'CRC-16/DECT-X', width: 16, poly: 0x0589, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/DNP', width: 16, poly: 0x3D65, init: 0x0000, refin: true, refout: true, xorout: 0xFFFF },
+  { name: 'CRC-16/EN-13757', width: 16, poly: 0x3D65, init: 0x0000, refin: false, refout: false, xorout: 0xFFFF },
+  { name: 'CRC-16/GENIBUS', width: 16, poly: 0x1021, init: 0xFFFF, refin: false, refout: false, xorout: 0xFFFF },
+  { name: 'CRC-16/GSM', width: 16, poly: 0x1021, init: 0x0000, refin: false, refout: false, xorout: 0xFFFF },
+  { name: 'CRC-16/IBM-3740', width: 16, poly: 0x1021, init: 0xFFFF, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/IBM-SDLC', width: 16, poly: 0x1021, init: 0xFFFF, refin: true, refout: true, xorout: 0xFFFF },
+  { name: 'CRC-16/ISO-IEC-14443-3-A', width: 16, poly: 0x1021, init: 0xC6C6, refin: true, refout: true, xorout: 0x0000 },
+  { name: 'CRC-16/KERMIT', width: 16, poly: 0x1021, init: 0x0000, refin: true, refout: true, xorout: 0x0000 },
+  { name: 'CRC-16/LJ1200', width: 16, poly: 0x6F63, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/M17', width: 16, poly: 0x5935, init: 0xFFFF, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/MAXIM-DOW', width: 16, poly: 0x8005, init: 0x0000, refin: true, refout: true, xorout: 0xFFFF },
+  { name: 'CRC-16/MCRF4XX', width: 16, poly: 0x1021, init: 0xFFFF, refin: true, refout: true, xorout: 0x0000 },
   { name: 'CRC-16/MODBUS', width: 16, poly: 0x8005, init: 0xFFFF, refin: true, refout: true, xorout: 0x0000 },
+  { name: 'CRC-16/NRSC-5', width: 16, poly: 0x080B, init: 0xFFFF, refin: true, refout: true, xorout: 0x0000 },
+  { name: 'CRC-16/OPENSAFETY-A', width: 16, poly: 0x5935, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/OPENSAFETY-B', width: 16, poly: 0x755B, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
   { name: 'CRC-16/PROFIBUS', width: 16, poly: 0x1DCF, init: 0xFFFF, refin: false, refout: false, xorout: 0xFFFF },
+  { name: 'CRC-16/RIELLO', width: 16, poly: 0x1021, init: 0xB2AA, refin: true, refout: true, xorout: 0x0000 },
+  { name: 'CRC-16/SPI-FUJITSU', width: 16, poly: 0x1021, init: 0x1D0F, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/T10-DIF', width: 16, poly: 0x8BB7, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/TELEDISK', width: 16, poly: 0xA097, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/TMS37157', width: 16, poly: 0x1021, init: 0x89EC, refin: true, refout: true, xorout: 0x0000 },
+  { name: 'CRC-16/UMTS', width: 16, poly: 0x8005, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
+  { name: 'CRC-16/USB', width: 16, poly: 0x8005, init: 0xFFFF, refin: true, refout: true, xorout: 0xFFFF },
+  { name: 'CRC-16/XMODEM', width: 16, poly: 0x1021, init: 0x0000, refin: false, refout: false, xorout: 0x0000 },
 
   // CRC-32 family
+  { name: 'CRC-32/AIXM', width: 32, poly: 0x814141AB, init: 0x00000000, refin: false, refout: false, xorout: 0x00000000 },
+  { name: 'CRC-32/AUTOSAR', width: 32, poly: 0xF4ACFB13, init: 0xFFFFFFFF, refin: true, refout: true, xorout: 0xFFFFFFFF },
+  { name: 'CRC-32/BASE91-D', width: 32, poly: 0xA833982B, init: 0xFFFFFFFF, refin: true, refout: true, xorout: 0xFFFFFFFF },
+  { name: 'CRC-32/BZIP2', width: 32, poly: 0x04C11DB7, init: 0xFFFFFFFF, refin: false, refout: false, xorout: 0xFFFFFFFF },
+  { name: 'CRC-32/CD-ROM-EDC', width: 32, poly: 0x8001801B, init: 0x00000000, refin: true, refout: true, xorout: 0x00000000 },
+  { name: 'CRC-32/CKSUM', width: 32, poly: 0x04C11DB7, init: 0x00000000, refin: false, refout: false, xorout: 0xFFFFFFFF },
+  { name: 'CRC-32/ISCSI', width: 32, poly: 0x1EDC6F41, init: 0xFFFFFFFF, refin: true, refout: true, xorout: 0xFFFFFFFF },
+  { name: 'CRC-32/ISO-HDLC', width: 32, poly: 0x04C11DB7, init: 0xFFFFFFFF, refin: true, refout: true, xorout: 0xFFFFFFFF },
+  { name: 'CRC-32/JAMCRC', width: 32, poly: 0x04C11DB7, init: 0xFFFFFFFF, refin: true, refout: true, xorout: 0x00000000 },
+  { name: 'CRC-32/MEF', width: 32, poly: 0x741B8CD7, init: 0xFFFFFFFF, refin: true, refout: true, xorout: 0x00000000 },
   { name: 'CRC-32/MPEG-2', width: 32, poly: 0x04C11DB7, init: 0xFFFFFFFF, refin: false, refout: false, xorout: 0x00000000 },
   { name: 'CRC-32/STM32 (HW unit)', width: 32, poly: 0x04C11DB7, init: 0xFFFFFFFF, refin: false, refout: false, xorout: 0x00000000 },
+  { name: 'CRC-32/XFER', width: 32, poly: 0x000000AF, init: 0x00000000, refin: false, refout: false, xorout: 0x00000000 },
 ];
 
 function clamp(n: number, min: number, max: number) { return Math.min(Math.max(n, min), max); }
@@ -268,31 +326,7 @@ export default function CrcTab() {
   }, [bytes, params, refin, refout, showSteps]);
 
   const crcHex = useMemo(() => toHex(result.crc, params.w), [result.crc, params.w]);
-
-  const lut = useMemo(() => genLUT(params.w, params.p, refin), [params, refin]);
-  const cType = useMemo(() => params.w <= 8 ? 'uint8_t' : params.w <= 16 ? 'uint16_t' : 'uint32_t', [params.w]);
-  const lutArr = useMemo(() => cArray('crc_table', lut, cType), [lut, cType]);
   const cCode = useMemo(() => cCodeSnippet('crc_calc', params.w, params.p, params.i, refin, refout, params.xo, useLut), [params, refin, refout, useLut]);
-
-  const profileJson = useMemo(() => {
-    const obj = { width: params.w, poly: '0x' + params.p.toString(16), init: '0x' + params.i.toString(16), refin, refout, xorout: '0x' + params.xo.toString(16), dataMode, dataStr, useLut };
-    return JSON.stringify(obj, null, 2);
-  }, [params, refin, refout, xorout, dataMode, dataStr, useLut]);
-  const [profileIn, setProfileIn] = useState<string>('');
-  function applyProfileFromJson() {
-    try {
-      const o = JSON.parse(profileIn || '{}');
-      if (o.width) setWidth(Number(o.width));
-      if (o.poly) setPoly(String(o.poly));
-      if (o.init) setInit(String(o.init));
-      if (typeof o.refin === 'boolean') setRefin(o.refin);
-      if (typeof o.refout === 'boolean') setRefout(o.refout);
-      if (o.xorout) setXorout(String(o.xorout));
-      if (o.dataMode) setDataMode(o.dataMode);
-      if (typeof o.dataStr === 'string') setDataStr(o.dataStr);
-      if (typeof o.useLut === 'boolean') setUseLut(o.useLut);
-    } catch { }
-  }
 
   const rowsMain = [
     { label: 'CRC (hex)', value: crcHex },
@@ -353,6 +387,7 @@ export default function CrcTab() {
         </div>
         <ResultCard rows={[...rowsMain]} />
       </div>
+      <br />
       <CodeSample
         title="C code"
         language="c"

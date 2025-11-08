@@ -1,36 +1,59 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { TabbedPanel } from '@/ui/components/TabbedPanel';
-import TimerTab from './tabs/Timer';
-// import BusTab from './tabs/Bus';
-// import GenTab from './tabs/GenTab';
-// import MemroyTab from './tabs/Memroy';
-import DFUTab from './tabs/DfuTab';
-import CrcTab from './tabs/CrcTab';
+import TimerTab from '@/pages/calcs/mcu/tabs/Timer';
+import DFUTab from '@/pages/calcs/mcu/tabs/DfuTab';
+import CrcTab from '@/pages/calcs/mcu/tabs/CrcTab';
+import { AdcTab } from '@/pages/calcs/mcu/tabs/AdcTab';
 
-export default function MCU() {
+
+type McuTab = 'tim' | 'adc' | 'dfu' | 'crc';
+const TABS: { key: McuTab; label: string }[] = [
+  { key: 'tim', label: 'Timer' },
+  { key: 'adc', label: 'ADC' },
+  { key: 'dfu', label: 'DFU' },
+  { key: 'crc', label: 'CRC' },
+];
+
+function parseHash(): McuTab {
+  const h = (location.hash || '').replace(/^#/, '');
+  return (TABS.some(t => t.key === h) ? h : 'tim') as McuTab;
+}
+
+export default function Mcu() {
   // Sub-tabs
-  const [tab, setTab] = useState('tim');
-  const tabs = [
-    { key: 'tim', label: 'Timer' },
-    // { key: 'bus', label: 'Bus' },
-    // { key: 'mem', label: 'Memory' },
-    { key: 'dfu', label: 'DFU' },
-    // { key: 'gen', label: 'Generators' },
-    { key: 'crc', label: 'CRC' },
-  ];
+  const [tab, setTab] = useState<McuTab>(() => parseHash());
+
+  useEffect(() => {
+    const desired = `#${tab}`;
+    if (location.hash !== desired) {
+      const url = new URL(location.href);
+      url.hash = desired;
+      history.replaceState(null, '', url);
+    }
+  }, [tab]);
+
+  useEffect(() => {
+    const onHash = () => setTab(parseHash());
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  const handleSelect = (t: string) => {
+    const key = t as McuTab;
+    if (TABS.some(tab => tab.key === key)) setTab(key);
+  };
+
   return (
     <div class="grid">
       <div class="flex flex-col gap-4">
         <TabbedPanel
-          tabs={tabs}
+          tabs={TABS}
           active={tab}
-          onSelect={setTab}
+          onSelect={handleSelect}
         >
           {tab === 'tim' && <TimerTab />}
-          {/* {tab === 'bus' && <BusTab />}
-          {tab === 'mem' && <MemroyTab />} */}
+          {tab === 'adc' && <AdcTab />}
           {tab === 'dfu' && <DFUTab />}
-          {/* {tab === 'gen' && <GenTab />} */}
           {tab === 'crc' && <CrcTab />}
         </TabbedPanel>
       </div>

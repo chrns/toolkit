@@ -45,7 +45,7 @@ export function AttenuatorTab() {
     <div class="grid cols-2">
       <div>
         <Input label="Attenuation" value={AdB} onChange={setAdB} suffix="dB" placeholder="3" />
-        <Input label="Z0 (matched)" value={Z0s} onChange={setZ0s} suffix="Ω" placeholder="50" />
+        <Input label={<>Z<sub>0</sub> (matched)</>} value={Z0s} onChange={setZ0s} suffix="Ω" placeholder="50" />
       </div>
       <ResultCard rows={rows} />
     </div>

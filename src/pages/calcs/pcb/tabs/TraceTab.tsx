@@ -31,32 +31,36 @@ export function TraceTab() {
   const resistance = getTraceResistance(w, l, t, ta);
   const vDrop = I * resistance;
   const loss = I * I * resistance;
-  console.log([w, t, ta, tp]);
   const transientCurrent = getTraceTransientCurrent(w, t, tp);
+
+  // const innerTransientCurrent = getInnerTraceTransientCurrent(w, t, ta);
 
   const rows = useMemo(() => ([
     { label: 'Resistance', value: formatSI(resistance, 'Ω') },
     { label: 'Voltage drop', value: formatSI(vDrop, 'V') },
     { label: 'Power loss', value: formatSI(loss, 'W') },
     { label: 'Transient Current', value: formatSI(transientCurrent, 'A') },
+    // { label: 'Inner trace current', value: formatSI(innerTransientCurrent, 'A') },
   ]), [width, length, thickness, temperature, current, tPulse]);
 
   return (
     <div class="grid cols-2">
       <div>
-        <Input label="Trace width (w)" value={width} onChange={setWidth} suffix="m" />
-        <Input label="Trace length (l)" value={length} onChange={setLength} suffix="m" />
-        <Select
-          label="Base copper weight (t)"
-          value={thickness}
-          onChange={setThickness}
-          options={copperWeightsList.map(w => ({ label: w, value: w }))}
-        />
-        <Input label="Temperature (ta)" value={temperature} onChange={setTemperature} suffix="°C" />
-        <Input label="Current" value={current} onChange={setCurrent} suffix="A" />
-        <Input label="Transient time" value={tPulse} onChange={setTPulse} suffix="s" />
+        <div class="hint">For t<sub>p</sub> &gt; 0 Onderdonk formula is used, Preece otherwise</div>
+        <div class="grid cols-2">
+          <Input label="Trace width (w)" value={width} onChange={setWidth} suffix="m" />
+          <Input label="Trace length (l)" value={length} onChange={setLength} suffix="m" />
+          <Select
+            label="Base copper weight (t)"
+            value={thickness}
+            onChange={setThickness}
+            options={copperWeightsList.map(w => ({ label: w, value: w }))}
+          />
+          <Input label="Temperature (ta)" value={temperature} onChange={setTemperature} suffix="°C" />
+          <Input label="Current" value={current} onChange={setCurrent} suffix="A" />
+          <Input label="Transient time" value={tPulse} onChange={setTPulse} suffix="s" />
+        </div>
       </div>
-
       <ResultCard rows={rows} />
     </div>
   );

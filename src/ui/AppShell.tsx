@@ -33,7 +33,7 @@ export function AppShell(props: { children: ComponentChildren }) {
             }</span>
           </div>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-3">
           <SupportButton href="https://github.com/sponsors/chrns" />
           <ThemeToggle />
         </div>

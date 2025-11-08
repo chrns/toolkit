@@ -10,7 +10,7 @@ function fmt(val: number, unit: "Ah" | "Wh") {
   return s;
 }
 
-export function BatteryMetricsTab() {
+export function MetricsTab() {
   const [Vn, setVn] = useState("22.2");
   const [capAh, setCapAh] = useState("5");
   const [capWh, setCapWh] = useState("111");
@@ -105,5 +105,3 @@ export function BatteryMetricsTab() {
     </div>
   );
 }
-
-export default BatteryMetricsTab;

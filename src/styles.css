@@ -106,6 +106,12 @@ textarea {
   text-align: center;
 }
 
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1em 0;
+}
+
 /* * * * * * * * * * *
  * Home & Card grid  *
  * * * * * * * * * * */
@@ -183,7 +189,7 @@ textarea {
 }
 
 input:disabled {
-  opacity: .6;
+  opacity: .5;
   cursor: not-allowed;
 }
 
@@ -1226,4 +1232,13 @@ code[data-lang="c"] .op {
     height: 32px;
     min-width: 32px;
   }
+}
+
+textarea {
+  background-color: var(--bg);
+  border-radius: 5px;
+  border-color: var(--border);
+  width: 100%;
+  resize: vertical;
+  min-height: 6lh;
 }

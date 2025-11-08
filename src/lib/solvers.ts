@@ -1,4 +1,4 @@
-import { Item, ItemType, Series } from "@/lib/units";
+import { IN2_PER_M2, Item, ItemType, Series, SQMILS_PER_IN2 } from "@/lib/units";
 
 export function findClosestESeriesValue(nominal: number, seriesName: string): { value: number; deviation: number } {
   const series = Series.find(s => s.name === seriesName);
@@ -121,4 +121,17 @@ export function getTraceTransientCurrent(w: number, t: number, tp: number): numb
   const C = 0.0346;                      // copper constant (Onderdonk), mil²·s
   const I = A_mil2 * Math.sqrt(C / tp);  // Amperes
   return I;
+}
+
+export function getInnerTraceTransientCurrent(w: number, t: number, ta: number): number {
+  return 0;
+}
+
+export function getWheatstoneOutputVoltage(vin: number, r1: number, r2: number, r3: number, rx: number): number {
+  return vin * ((rx / (r3 + rx)) - (r2 / (r1 + r2)));
+}
+
+export function getWheatstoneRx(vin: number, r1: number, r2: number, r3: number, vb: number): number {
+  const ratio = vb / vin;
+  return (r2 * r3 + r3 * (r1 + r2) * ratio) / (r1 - (r1 + r2) * ratio);
 }

@@ -9,7 +9,7 @@ import { ComponentsIcon } from '@/ui/icons/ComponentsIcon';
 export default function Home() {
   return (
     <div class="home-grid">
-      <CardButton href="/ohms" label="Ohm's Law & co.">
+      <CardButton href="/ohms" label="Ohm's Law & Co.">
         <OhmsLawIcon />
       </CardButton>
 

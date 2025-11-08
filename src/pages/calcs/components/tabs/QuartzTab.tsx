@@ -78,7 +78,7 @@ export function QuartzTab() {
         </div>
         <Input label="Load sensitivity (ppm per +1 pF)" value={PpmPerPicoRaw} onChange={setKppm} suffix="ppm/pF" placeholder={defaultPpmPerPico} />
 
-        <h4>Asumetric design</h4>
+        <h4>Asymmetric design</h4>
 
         <div class="grid cols-2">
           <Input label="XTAL_IN pin capacitance" value={XTALInRaw} onChange={setCinPin} suffix="F" placeholder="5p" />

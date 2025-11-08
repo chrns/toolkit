@@ -92,7 +92,7 @@ export default function TimerTab() {
             />
           </div>
           <Input
-            label={<>F<sub>clk</sub></>}
+            label={<>Timer clock, F<sub>clk</sub></>}
             value={timClk}
             onChange={setTimClk}
             suffix="Hz"

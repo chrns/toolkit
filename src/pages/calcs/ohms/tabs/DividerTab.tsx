@@ -8,7 +8,7 @@ import {
   resistancePlaceholder, voltagePlaceholder, currentPlaceholder, defaultCapacitance,
   defaultACVoltage, defaultInductance, capacitancePlaceholder, inductancePlaceholder,
   frequencyPlaceholder
-} from '../../shared';
+} from '@/pages/calcs/shared';
 
 export function DividerTab() {
   type Solver = 'R' | 'L' | 'C';

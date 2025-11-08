@@ -7,7 +7,7 @@ import { useState, useMemo } from "preact/hooks";
 import {
   defaultToleranceR, defaultResistance, defaultVoltage, defaultCurrent,
   resistancePlaceholder, voltagePlaceholder, currentPlaceholder, defaultForwardVoltage, SolveRVI
-} from '../../shared';
+} from '@/pages/calcs/shared';
 
 export function LedTab() {
   const [voltage, setVoltage] = useState(defaultVoltage);
@@ -88,7 +88,7 @@ export function LedTab() {
 
   return (
     <div class="grid cols-2">
-      <div class="flex flex-col gap-3">
+      <div class="grid cols-1">
         <Input
           label="Voltage" value={voltage} suffix="V" placeholder={voltagePlaceholder}
           onChange={makeOnChange('V', setVoltage)}
